@@ -1,5 +1,5 @@
 Flask==2.3.3
-cohere==5.9.1
+cohere==5.17.0
 langchain-community==0.2.10
 langchain-text-splitters==0.2.2
 langchain-chroma==0.1.2
