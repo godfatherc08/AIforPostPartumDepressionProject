@@ -60,8 +60,7 @@ def ask():
     documents=cohere_docs,
      )
     result = response.message.content[0].text
-    return jsonify(result)
-
+    return jsonify({"response": result})
 
 
 def create_app():
@@ -78,3 +77,4 @@ app = create_app()
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+
