@@ -43,8 +43,10 @@ docs = splitter.split_documents(all_documents)
 
 # Embeddings + vector database
 embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-db = Chroma.from_documents(docs, embedding_model, persist_directory="./chroma_store")
-
+if not os.path.exists("./chroma_store"):
+    db = Chroma.from_documents(docs, embedding_model, persist_directory="./chroma_store")
+else:
+    db = Chroma(persist_directory="./chroma_store", embedding_function=embedding_model)
 
 @views.route("/ask", methods=["POST"])
 def ask():
@@ -77,6 +79,7 @@ app = create_app()
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
