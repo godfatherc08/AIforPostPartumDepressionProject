@@ -8,4 +8,5 @@ langchain-chroma>=0.1.4
 sentence-transformers==2.7.0
 pypdf==4.2.0
 chromadb==0.4.24
+numpy<2.0
 gunicorn==21.2.0
